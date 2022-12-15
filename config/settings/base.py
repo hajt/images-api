@@ -60,9 +60,7 @@ THIRD_PARTY_APPS = [
     "celery",
 ]
 
-LOCAL_APPS = [
-    "api.users",
-]
+LOCAL_APPS = ["api.users", "api.images"]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
@@ -158,6 +156,12 @@ STATIC_ROOT = str(ROOT_DIR("staticfiles"))
 make_dir_if_does_not_exist(STATIC_ROOT)
 
 STATIC_URL = "/static/"
+
+
+# Media files (Images)
+MEDIA_ROOT = str(ROOT_DIR("media"))
+MEDIA_URL = "/media/"
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

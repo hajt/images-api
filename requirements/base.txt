@@ -73,6 +73,8 @@ packaging==21.3
     # via
     #   drf-yasg
     #   redis
+pillow==9.3.0
+    # via -r requirements/base.in
 prompt-toolkit==3.0.30
     # via click-repl
 psycopg2==2.9.3

@@ -7,3 +7,4 @@ django-filter
 drf-yasg
 redis
 celery
+pillow

@@ -136,6 +136,10 @@ pexpect==4.8.0
     # via ipython
 pickleshare==0.7.5
     # via ipython
+pillow==9.3.0
+    # via
+    #   -r requirements/././base.in
+    #   -r requirements/./base.in
 pip-tools==6.8.0
     # via -r requirements/local.in
 pluggy==1.0.0

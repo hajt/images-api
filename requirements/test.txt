@@ -94,6 +94,8 @@ packaging==21.3
     #   drf-yasg
     #   pytest
     #   redis
+pillow==9.3.0
+    # via -r requirements/./base.in
 pluggy==1.0.0
     # via pytest
 prompt-toolkit==3.0.30
