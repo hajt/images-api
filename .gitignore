@@ -278,3 +278,4 @@ tags
 app/media/
 media/
 utils.py
+temp/
