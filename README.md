@@ -1,44 +1,31 @@
-# Python Recruitment Task
+# Images App
 
-This task will require from you to create a simple REST API for uploading and serving images.
+This is a REST API application which allows upload and manage images. Uploaded images might be resized to the provided dimensions.
 
-> Read through the task. If you already have sample code that covers the topics of the task that represent your skill level, you can use that instead. Bare in mind, that if we decide it's not sufficient, we can ask you to do the task regardless ;)
+## Requirements:
 
-## Specification
+- `docker` and `docker-compose` services  
+  **Note:** _For development purposes, there is also required **Python** in >= 3.9 version. Preferable also **virtual environment manager** (eg. miniconda3)_
 
-The API should consist of following endpoints:
+## Running:
 
-- `POST /images`
-  - Enpoint must allow to upload an image in commonly used image formats.
-  - Endpoint must allow for setting image `title`
-  - Image object must be stored in database
-  - Image file must be stored in storage (see **Requirements**)
-  - Image should be resized according to `width` and `height` parameters provided in request
-- `GET /images`
-  - Endpoint must return a list of image objects with their respective `id`, `url`, `title`, `width` and `height`
-  - Endpoint should allow for filtering based on `title` - "title must contain {text}"
-  - Enpoint should include pagination
-- `GET /images/:id`
-  - Endpoint should return single image object with their respective `id`, `url`, `title`, `width` and `height` based on provided `id`
+1. Clone repository to your local machine.
+1. Open terminal and exec command `make run`.  
+   **Note:** _App runs on default port `8000`_
 
-## Requriements
+## Usage:
 
-Preffered options are marked with **bold**.
+- API documentation in available under `/swagger` endpoint. It is also possible to send example requests via swagger (after earlier authorization)
+- App has default Django admin panel under `/admin` endpoint
 
-1. Dev environment - **docker(-compose)**, virtualenv
-2. Python - 3.9+
-3. Framework - **Django (DRF)**, FastAPI, Flask
-4. Database - any relational (**PostgreSQL**, MySQL, sqlite)
-5. Storage - **filesystem** or external storage (**Amazon S3**, Azure Storage, Gogole Storage)
-6. Image processing - image should be **scaled** or cropped and optimized to given size
-7. Tests - **pytest**, unittest
-8. API Documentation - OpenAPIv3 (swagger)
-9. Dev documentation (readme.md)
+## Configuration:
 
-## Review
+- there is required to create superuser  
+  **Hint:** Type in your terminal, in the repository directory `make superuser`
+- superuser can create users
+- users can obtain authorization **Bearer** token by sending POST request on `/token` endpoint with `username` and `password` in body
 
-The application's code can be hosted as a public repository, or private repository with READ access to the reviewers - their emails or usernames should be provided in the email you received this task with.
+## Development:
 
-If you have any questions feel free to ask - we are availbile via the same email addresses as reviewers :)
-
-Good luck :)
+- App is covered by unit tests
+- To run tests type in the terminal `make test`
