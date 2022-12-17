@@ -28,7 +28,7 @@ def test_image_view_get_list_images(authenticated_api_client):
     )
 
     response = authenticated_api_client.get(reverse("images:images-list"))
-    response_data = json.dumps(response.data)
+    response_data = json.dumps(response.data["results"])
 
     assert response.status_code == 200
     assert response_data == expected_response
@@ -39,7 +39,7 @@ def test_image_view_get_list_no_images(authenticated_api_client):
     response = authenticated_api_client.get(reverse("images:images-list"))
 
     assert response.status_code == 200
-    assert response.data == []
+    assert response.data["results"] == []
 
 
 @pytest.mark.django_db
@@ -48,7 +48,7 @@ def test_image_view_get_list_no_image_owner(authenticated_api_client):
     response = authenticated_api_client.get(reverse("images:images-list"))
 
     assert response.status_code == 200
-    assert response.data == []
+    assert response.data["results"] == []
 
 
 @pytest.mark.django_db

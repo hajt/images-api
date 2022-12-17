@@ -1,5 +1,7 @@
+from django_filters import rest_framework as filters
 from drf_yasg.utils import swagger_auto_schema
 
+from rest_framework.pagination import PageNumberPagination
 from rest_framework.parsers import FormParser, MultiPartParser
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
@@ -14,13 +16,25 @@ from .serializers import (
 )
 
 
-# TODO: Add filter and pagination
+class ImagePagination(PageNumberPagination):
+    page_size = 10
+
+
+class ImageFilter(filters.FilterSet):
+    class Meta:
+        model = Image
+        fields = {
+            "title": ["icontains"],
+        }
 
 
 class ImageViewSet(ModelViewSet):
     permission_classes = (IsAuthenticated,)
+    pagination_class = ImagePagination
     http_method_names = ["get", "post", "patch", "delete"]
     parser_classes = [MultiPartParser, FormParser]
+    filter_backends = [filters.DjangoFilterBackend]
+    filterset_class = ImageFilter
 
     def get_queryset(self):
         return Image.objects.filter(user=self.request.user.id).order_by("title")
